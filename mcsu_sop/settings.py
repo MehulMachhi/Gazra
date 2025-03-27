@@ -44,6 +44,7 @@ DJANGO_APPS = [
     # 'django_cron',
     "quiz_app",
     'import_export',
+    'rest_framework',
 ]
 
 CRONJOBS = [

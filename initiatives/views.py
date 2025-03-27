@@ -1,62 +1,67 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .models import (
+    Initiative, BrainstormingSession, CommunityFeedback, NeedsAnalysis, CommunityMapping, 
+    Task, Stakeholder, Event, Feedback, Risk, KPI, Milestone, Budget, ExecutionLog
+)
+from .serializers import (
+    InitiativeSerializer, BrainstormingSessionSerializer, CommunityFeedbackSerializer, 
+    NeedsAnalysisSerializer, CommunityMappingSerializer, TaskSerializer, StakeholderSerializer, 
+    EventSerializer, FeedbackSerializer, RiskSerializer, KPISerializer, MilestoneSerializer, 
+    BudgetSerializer, ExecutionLogSerializer
+)
 
-# Create your views here.
-from datetime import timedelta, date
-from django.utils.timezone import now
-from django.core.mail import send_mass_mail
-from .models import BrainstormingSession
-from users.models import Member
-from celery import shared_task
+class InitiativeViewSet(ModelViewSet):
+    queryset = Initiative.objects.all()
+    serializer_class = InitiativeSerializer
 
-# @shared_task
-# def send_reminder_emails():
-#     tomorrow = date.today() + timedelta(days=1)
-#     sessions = BrainstormingSession.objects.filter(date=tomorrow)
-#     if not sessions.exists():
-#         return "No sessions scheduled for tomorrow."
-#     recipient_emails = list(
-#         Member.objects.filter(status='ACTIVE').values_list('user__email', flat=True)
-#     )
-#     if not recipient_emails:
-#         return "No active members found with email addresses."
-#     email_data = []
-#     for session in sessions:
-#         subject = f"Reminder: {session.get_session_type_display()} Session Tomorrow"
-#         message = (
-#             f"Dear Member,\n\n"
-#             f"We'd like to remind you of the upcoming brainstorming session:\n\n"
-#             f"Session Type: {session.get_session_type_display()}\n"
-#             f"Initiative: {session.initiative.name}\n"
-#             f"Date: {session.date}\n"
-#             f"Location: {session.location}\n"
-#             f"Facilitator: {session.facilitator.user.first_name} {session.facilitator.user.last_name}\n\n"
-#             f"Agenda: {session.agenda}\n\n"
-#             f"We look forward to your participation!\n\n"
-#             f"Best Regards,\n"
-#             f"The Team"
-#         )
-#         email_data.append((subject, message, 'support@gazra.org', recipient_emails))
-#     send_mass_mail(email_data)
-#     return f"Emails successfully sent to {len(recipient_emails)} members."
+class BrainstormingSessionViewSet(ModelViewSet):
+    queryset = BrainstormingSession.objects.all()
+    serializer_class = BrainstormingSessionSerializer
 
+class CommunityFeedbackViewSet(ModelViewSet):
+    queryset = CommunityFeedback.objects.all()
+    serializer_class = CommunityFeedbackSerializer
 
+class NeedsAnalysisViewSet(ModelViewSet):
+    queryset = NeedsAnalysis.objects.all()
+    serializer_class = NeedsAnalysisSerializer
 
-from django.http import JsonResponse
-from celery.result import AsyncResult
+class CommunityMappingViewSet(ModelViewSet):
+    queryset = CommunityMapping.objects.all()
+    serializer_class = CommunityMappingSerializer
 
-def check_task_status(request, task_id):
-    result = AsyncResult(task_id)  
-    if result.ready():
-        return JsonResponse({'status': 'completed', 'result': result.result})
-    else:
-        return JsonResponse({'status': 'processing', 'message': 'Task is still processing...'})
+class TaskViewSet(ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
+class StakeholderViewSet(ModelViewSet):
+    queryset = Stakeholder.objects.all()
+    serializer_class = StakeholderSerializer
 
-# views.py
+class EventViewSet(ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
 
-from django.http import JsonResponse
-# from initiatives.tasks import long_task
+class FeedbackViewSet(ModelViewSet):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
 
-# def start_long_task(request):
-#     long_task.delay()  # Calling the Celery task
-#     return JsonResponse({"status": "Task started"})
+class RiskViewSet(ModelViewSet):
+    queryset = Risk.objects.all()
+    serializer_class = RiskSerializer
+
+class KPIViewSet(ModelViewSet):
+    queryset = KPI.objects.all()
+    serializer_class = KPISerializer
+
+class MilestoneViewSet(ModelViewSet):
+    queryset = Milestone.objects.all()
+    serializer_class = MilestoneSerializer
+
+class BudgetViewSet(ModelViewSet):
+    queryset = Budget.objects.all()
+    serializer_class = BudgetSerializer
+
+class ExecutionLogViewSet(ModelViewSet):
+    queryset = ExecutionLog.objects.all()
+    serializer_class = ExecutionLogSerializer
