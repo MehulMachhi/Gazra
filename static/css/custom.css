@@ -1,0 +1,230 @@
+/* Header and Navigation Styles */
+:root {
+    --header-bg: #8878BD;         /* Lighter purple for header */
+    --header-hover: #9889CE;      /* Even lighter for hover states */
+    --header-text: #FFFFFF;       /* White text */
+    --header-text-muted: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    --search-bg: rgba(255, 255, 255, 0.1); /* Semi-transparent white for search */
+    --search-focus: rgba(255, 255, 255, 0.2); /* Darker for focus state */
+}
+
+/* Header Container */
+.header,
+.navbar {
+    background-color: var(--header-bg) !important;
+    box-shadow: 0 2px 10px rgba(107, 92, 168, 0.2);
+    padding: 0.75rem 1.5rem;
+}
+
+/* Logo Area */
+.navbar-brand {
+    color: var(--header-text) !important;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Navigation Links */
+.navbar .nav-link {
+    color: var(--header-text-muted) !important;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.navbar .nav-link:hover {
+    color: var(--header-text) !important;
+    background-color: var(--header-hover);
+}
+
+/* Active Navigation Link */
+.navbar .nav-link.active {
+    color: var(--header-text) !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Search Inputs */
+.navbar .form-control {
+    background-color: var(--search-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: var(--header-text) !important;
+    border-radius: 20px !important;
+    padding: 0.375rem 1rem !important;
+}
+
+.navbar .form-control:focus {
+    background-color: var(--search-focus) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Search Input Placeholder */
+.navbar .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* User Menu */
+.navbar .user-menu {
+    color: var(--header-text);
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+    background: transparent;
+    padding: 0.75rem 1rem;
+}
+
+.breadcrumb-item a {
+    color: var(--header-text-muted);
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: var(--header-text);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--header-text-muted);
+}
+
+/* Button in header */
+.navbar .btn-primary {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: var(--header-text) !important;
+}
+
+.navbar .btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Responsive menu button */
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Icons in header */
+.navbar i,
+.navbar .fa,
+.navbar .fas {
+    color: var(--header-text-muted);
+}
+
+.navbar i:hover,
+.navbar .fa:hover,
+.navbar .fas:hover {
+    color: var(--header-text);
+}
+
+/* Search Groups and Icons */
+.search-box {
+    position: relative;
+    margin: 0 10px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--header-text-muted);
+}
+
+/* Dropdown menus in header */
+.navbar .dropdown-menu {
+    background-color: var(--header-hover);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .dropdown-item {
+    color: var(--header-text-muted);
+}
+
+.navbar .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--header-text);
+}
+
+/* Quick Action Panel */
+.quick-actions-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.btn-floating {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(107, 92, 168, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quick-actions-panel {
+    position: fixed;
+    right: 30px;
+    bottom: 100px;
+    width: 300px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+/* Bulk Action Bar */
+.bulk-action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Smart Filters */
+.smart-filters {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter-chip {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-chip:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Floating Notes */
+.floating-note-toggle {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+}

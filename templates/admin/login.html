@@ -1,0 +1,49 @@
+{% extends "admin/login.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    .login {
+        background: linear-gradient(135deg, #8878BD 0%, #6B5CA8 100%);
+    }
+
+    .login-logo {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .login-logo img {
+        max-width: 200px;
+        height: auto;
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .login-card-body {
+        padding: 30px;
+    }
+
+    .input-group-text {
+        background-color: #f8f9fa;
+        border-right: none;
+    }
+
+    .form-control {
+        border-left: none;
+    }
+
+    .btn-primary {
+        background-color: #6B5CA8;
+        border-color: #6B5CA8;
+    }
+
+    .btn-primary:hover {
+        background-color: #8878BD;
+        border-color: #8878BD;
+    }
+</style>
+{% endblock %}
